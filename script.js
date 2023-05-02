@@ -85,7 +85,7 @@ const allFruits = [
 
 function searchFruit(inputVal) {
   return allFruits.reduce((resultsArray, nextFruit) => {
-    if (nextFruit.includes(inputVal)) {
+    if (nextFruit.toLowerCase().includes(inputVal)) {
       resultsArray.push(nextFruit);
     }
     return resultsArray;
@@ -93,7 +93,7 @@ function searchFruit(inputVal) {
 }
 
 function searchHandler(e) {
-  const inputVal = input.value;
+  const inputVal = input.value.toLowerCase();
   let resultsArray = searchFruit(inputVal);
   showSuggestions(resultsArray, inputVal);
 }
@@ -113,6 +113,7 @@ function showSuggestions(resultsArray, inputVal) {
 function useSuggestion(e) {
   if (e.target.tagName === "LI") {
     input.value = e.target.innerText;
+    suggestions.innerHTML = "";
   }
 }
 
