@@ -1,7 +1,7 @@
 const input = document.querySelector("#fruit");
 const suggestions = document.querySelector(".suggestions ul");
 
-const fruit = [
+const allFruits = [
   "Apple",
   "Apricot",
   "Avocado 🥑",
@@ -83,30 +83,37 @@ const fruit = [
   "Yuzu",
 ];
 
-function search(inputVal) {
-  let filteredFruitArray = fruitFilter(fruit, inputVal);
-  return filteredFruitArray;
+function searchFruit(inputVal) {
+  return allFruits.reduce((resultsArray, nextFruit) => {
+    if (nextFruit.includes(inputVal)) {
+      resultsArray.push(nextFruit);
+    }
+    return resultsArray;
+  }, []);
 }
 
 function searchHandler(e) {
   const inputVal = input.value;
-  let results = search(inputVal);
-  showSuggestions(results, inputVal);
+  let resultsArray = searchFruit(inputVal);
+  showSuggestions(resultsArray, inputVal);
 }
 
-function showSuggestions(results, inputVal) {
-  console.log("showSugg", results);
+function showSuggestions(resultsArray, inputVal) {
+  suggestions.innerHTML = "";
+
+  resultsArray.forEach((fruit) => {
+    const newSuggest = document.createElement("li");
+    newSuggest.textContent = fruit;
+    newSuggest.classList.add("newSuggest");
+    newSuggest.setAttribute("id", fruit);
+    suggestions.appendChild(newSuggest);
+  });
 }
 
-function useSuggestion(e) {}
-
-function fruitFilter(fruit, inputVal) {
-  return fruit.reduce((accu, next) => {
-    if (next.includes(inputVal)) {
-      accu.push(next);
-    }
-    return accu;
-  }, []);
+function useSuggestion(e) {
+  if (e.target.tagName === "LI") {
+    input.value = e.target.innerText;
+  }
 }
 
 input.addEventListener("keyup", searchHandler);
