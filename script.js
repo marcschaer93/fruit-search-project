@@ -1,8 +1,6 @@
 const input = document.querySelector("#fruit");
 const suggestions = document.querySelector(".suggestions ul");
 
-const inputVal = input.value;
-
 const fruit = [
   "Apple",
   "Apricot",
@@ -86,39 +84,30 @@ const fruit = [
 ];
 
 function search(inputVal) {
-  // let results = [];
-
-  const results = filteredFruits(fruit, inputVal);
-  console.log(results);
-
-  return results;
+  let filteredFruitArray = fruitFilter(fruit, inputVal);
+  return filteredFruitArray;
 }
 
 function searchHandler(e) {
   const inputVal = input.value;
-  console.log(inputVal);
-  search(inputVal);
-  // showSuggestions(results, inputVal);
-
-  // TODO
+  let results = search(inputVal);
+  showSuggestions(results, inputVal);
 }
 
 function showSuggestions(results, inputVal) {
-  // TODO
+  console.log("showSugg", results);
 }
 
-function useSuggestion(e) {
-  // TODO
-}
+function useSuggestion(e) {}
 
-const filteredFruits = (fruit, inputVal) => {
+function fruitFilter(fruit, inputVal) {
   return fruit.reduce((accu, next) => {
     if (next.includes(inputVal)) {
       accu.push(next);
     }
     return accu;
   }, []);
-};
+}
 
 input.addEventListener("keyup", searchHandler);
 suggestions.addEventListener("click", useSuggestion);
