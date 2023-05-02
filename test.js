@@ -1,9 +1,10 @@
-const input = document.querySelector("#fruit");
-const suggestions = document.querySelector(".suggestions ul");
+// ### Step Six
 
-const inputVal = input.value;
+// **Filter The List Based On User Input**
 
-const fruit = [
+// Write a function called search(), which will trigger based on the event listener you created in the last step. This function will return a list called results. This function will filter the fruit list based on whatever user input is in the search box. **If the string in the user input appears ANYWHERE in the fruit name, it should be added to results list. It also should not matter if a user types upper or lower case letters.** That means that if a user types “ap” both “Apple” and “Grape” will appear in the results list.
+
+const fruits = [
   "Apple",
   "Apricot",
   "Avocado 🥑",
@@ -85,40 +86,13 @@ const fruit = [
   "Yuzu",
 ];
 
-function search(inputVal) {
-  // let results = [];
-
-  const results = filteredFruits(fruit, inputVal);
-  console.log(results);
-
-  return results;
-}
-
-function searchHandler(e) {
-  const inputVal = input.value;
-  console.log(inputVal);
-  search(inputVal);
-  // showSuggestions(results, inputVal);
-
-  // TODO
-}
-
-function showSuggestions(results, inputVal) {
-  // TODO
-}
-
-function useSuggestion(e) {
-  // TODO
-}
-
-const filteredFruits = (fruit, inputVal) => {
-  return fruit.reduce((accu, next) => {
-    if (next.includes(inputVal)) {
+const filterResults = (fruits, userInput) => {
+  return fruits.reduce((accu, next) => {
+    if (next.includes(userInput)) {
       accu.push(next);
     }
     return accu;
   }, []);
 };
 
-input.addEventListener("keyup", searchHandler);
-suggestions.addEventListener("click", useSuggestion);
+filterResults(fruits, "P");
