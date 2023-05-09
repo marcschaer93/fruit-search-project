@@ -85,6 +85,8 @@ const allFruits = [
 ];
 
 function searchHandler(e) {
+  e.preventDefault();
+  // inputVal !== " ";
   let inputVal = input.value.toLowerCase();
   let resultsArray = searchFruit(inputVal);
   showSuggestions(resultsArray);
@@ -92,7 +94,7 @@ function searchHandler(e) {
 
 function searchFruit(inputVal) {
   return allFruits.reduce((resultsArray, nextFruit) => {
-    if (nextFruit.toLowerCase().includes(inputVal)) {
+    if (nextFruit.toLowerCase().includes(inputVal) && inputVal !== " ") {
       resultsArray.push(nextFruit);
     }
     return resultsArray;
