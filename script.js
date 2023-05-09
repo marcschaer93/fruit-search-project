@@ -2,8 +2,8 @@ const input = document.querySelector("#fruit");
 const suggestions = document.querySelector(".suggestions ul");
 
 const allFruits = [
-  "Apple",
-  "Apricot",
+  "Apple 🍎 ",
+  "Apricot ",
   "Avocado 🥑",
   "Banana",
   "Bilberry",
@@ -119,3 +119,4 @@ function useSuggestion(e) {
 
 input.addEventListener("keyup", searchHandler);
 suggestions.addEventListener("click", useSuggestion);
+// suggestions.addEventListener("mouseover", useSuggestion);
