@@ -98,124 +98,124 @@
 // filterResults(fruits, "P");
 //============================
 //Part 1
-class Vehicle {
-  constructor(make, model, year) {
-    this.make = make;
-    this.model = model;
-    this.year = year;
-  }
+// class Vehicle {
+//   constructor(make, model, year) {
+//     this.make = make;
+//     this.model = model;
+//     this.year = year;
+//   }
 
-  honk() {
-    console.log("Beep");
-  }
+//   honk() {
+//     console.log("Beep");
+//   }
 
-  toString() {
-    console.log(
-      `The vehicle is a ${this.make} ${this.model} from ${this.year}`
-    );
-  }
-}
-
-let myFirstVehicle = new Vehicle("Honda", "Monster Truck", 1999);
-myFirstVehicle.honk(); // "Beep."
-
-let myFirstVan = new Vehicle("VW", "Westfalia T3", 1983);
+//   toString() {
+//     console.log(
+//       `The vehicle is a ${this.make} ${this.model} from ${this.year}`
+//     );
+//   }
+// }
 
 // let myFirstVehicle = new Vehicle("Honda", "Monster Truck", 1999);
-// myFirstVehicle.toString(); // "The vehicle is a Honda Monster Truck from 1999."
+// myFirstVehicle.honk(); // "Beep."
 
-//Part2
+// let myFirstVan = new Vehicle("VW", "Westfalia T3", 1983);
 
-class Car extends Vehicle {
-  constructor(make, model, year) {
-    super(make, model, year);
-    this.numWheels = 4;
-  }
-}
+// // let myFirstVehicle = new Vehicle("Honda", "Monster Truck", 1999);
+// // myFirstVehicle.toString(); // "The vehicle is a Honda Monster Truck from 1999."
 
-let myFirstCar = new Car("Toyota", "Corolla", 2005, 4);
-myFirstCar.toString(); // "The vehicle is a Toyota Corolla from 2005."
-myFirstCar.honk(); // "Beep."
-myFirstCar.numWheels; // 4
+// //Part2
 
-//Part3
+// class Car extends Vehicle {
+//   constructor(make, model, year) {
+//     super(make, model, year);
+//     this.numWheels = 4;
+//   }
+// }
 
-class Motorcycle extends Car {
-  constructor(make, model, year) {
-    super(make, model, year);
-    this.numWheels = 2;
-  }
-  revEngine() {
-    console.log("VROOM!!!");
-  }
-}
+// let myFirstCar = new Car("Toyota", "Corolla", 2005, 4);
+// myFirstCar.toString(); // "The vehicle is a Toyota Corolla from 2005."
+// myFirstCar.honk(); // "Beep."
+// myFirstCar.numWheels; // 4
 
-let myFirstMotorcycle = new Motorcycle("Honda", "Nighthawk", 2000);
+// //Part3
 
-myFirstMotorcycle.toString();
-// "The vehicle is a Honda Nighthawk from 2000."
+// class Motorcycle extends Car {
+//   constructor(make, model, year) {
+//     super(make, model, year);
+//     this.numWheels = 2;
+//   }
+//   revEngine() {
+//     console.log("VROOM!!!");
+//   }
+// }
 
-myFirstMotorcycle.honk(); // "Beep."
-myFirstMotorcycle.revEngine(); // "VROOM!!!"
-myFirstMotorcycle.numWheels; // 2
+// let myFirstMotorcycle = new Motorcycle("Honda", "Nighthawk", 2000);
 
-//Part4
+// myFirstMotorcycle.toString();
+// // "The vehicle is a Honda Nighthawk from 2000."
 
-class Garage {
-  constructor(spots) {
-    this.vehicles = [];
-    this.spots = spots;
-    this.numberOfVehicules = 0;
-  }
+// myFirstMotorcycle.honk(); // "Beep."
+// myFirstMotorcycle.revEngine(); // "VROOM!!!"
+// myFirstMotorcycle.numWheels; // 2
 
-  add(newVehicle) {
-    if (!(newVehicle instanceof Vehicle)) {
-      return console.log("Only vehicles are allowed in here!");
-    }
-    if (this.vehicles.length >= this.spots) {
-      return console.log("Sorry, we're full.");
-    } else {
-      this.vehicles.push(newVehicle);
-      this.numberOfVehicules++;
-      return console.log("Vehicle added!");
-    }
-  }
-}
+// //Part4
 
-let garage = new Garage(3);
+// class Garage {
+//   constructor(spots) {
+//     this.vehicles = [];
+//     this.spots = spots;
+//     this.numberOfVehicules = 0;
+//   }
 
-let myGarage = new Garage(3);
-let myNewGarage = new Garage(4);
-// garage.vehicles; // []
-// garage.add(new Car("Hyundai", "Elantra", 2015)); // "Vehicle added!"
-garage.vehicles; // [Car]
-// garage.add("Taco"); // "Only vehicles are allowed in here!"
+//   add(newVehicle) {
+//     if (!(newVehicle instanceof Vehicle)) {
+//       return console.log("Only vehicles are allowed in here!");
+//     }
+//     if (this.vehicles.length >= this.spots) {
+//       return console.log("Sorry, we're full.");
+//     } else {
+//       this.vehicles.push(newVehicle);
+//       this.numberOfVehicules++;
+//       return console.log("Vehicle added!");
+//     }
+//   }
+// }
 
-// garage.add(new Motorcycle("Honda", "Nighthawk", 2000));
-// "Vehicle added!"
-garage.vehicles; // [Car, Motorcycle]
+// let garage = new Garage(3);
 
-// garage.add(new Motorcycle("Honda", "Nighthawk", 2001));
-// "Sorry, we're full."
+// let myGarage = new Garage(3);
+// let myNewGarage = new Garage(4);
+// // garage.vehicles; // []
+// // garage.add(new Car("Hyundai", "Elantra", 2015)); // "Vehicle added!"
+// garage.vehicles; // [Car]
+// // garage.add("Taco"); // "Only vehicles are allowed in here!"
 
-function greeting(obj) {
-  obj.logMessage = function () {
-    console.log(`${this.name} is ${this.age} years old!`);
-  };
-}
+// // garage.add(new Motorcycle("Honda", "Nighthawk", 2000));
+// // "Vehicle added!"
+// garage.vehicles; // [Car, Motorcycle]
 
-const tom = {
-  name: "Tom",
-  age: 7,
-};
+// // garage.add(new Motorcycle("Honda", "Nighthawk", 2001));
+// // "Sorry, we're full."
 
-const jerry = {
-  name: "jerry",
-  age: 3,
-};
+// function greeting(obj) {
+//   obj.logMessage = function () {
+//     console.log(`${this.name} is ${this.age} years old!`);
+//   };
+// }
 
-greeting(tom);
-greeting(jerry);
+// const tom = {
+//   name: "Tom",
+//   age: 7,
+// };
 
-tom.logMessage();
-jerry.logMessage();
+// const jerry = {
+//   name: "jerry",
+//   age: 3,
+// };
+
+// greeting(tom);
+// greeting(jerry);
+
+// tom.logMessage();
+// jerry.logMessage();

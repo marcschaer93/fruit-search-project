@@ -95,3 +95,71 @@ input[type="search"]:focus {
   border-color: #1183d6;
   outline: none;
 }
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  font-family: monospace;
+}
+
+:focus {
+  /* TODO */
+}
+
+body {
+  background-color: slategray;
+  /* TODO */
+}
+
+input {
+  /* TODO */
+}
+
+.search-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 150px;
+
+  /* TODO */
+}
+.search-container input,
+.search-container .suggestions {
+  /* TODO */
+}
+.search-container input {
+  /* TODO */
+}
+.search-container .suggestions {
+  /* TODO */
+}
+
+ul {
+  list-style: none;
+  position: relative;
+  display: inline-block;
+  /* TODO */
+}
+ul.has-suggestions {
+  display: none;
+  position: absolute;
+  background-color: #f6f6f6;
+  min-width: 230px;
+  overflow: auto;
+  border: 1px solid #ddd;
+  z-index: 1;
+  /* TODO */
+}
+ul li {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  /* TODO */
+}
+ul li:hover {
+  background-color: #ddd;
+}
+
+input {
+  /* TODO */
+}

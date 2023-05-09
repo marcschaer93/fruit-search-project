@@ -1,5 +1,6 @@
 const input = document.querySelector("#fruit");
 const suggestions = document.querySelector(".suggestions ul");
+const fruitForm = document.querySelector("#fruitForm");
 
 const allFruits = [
   "Apple 🍎 ",
@@ -83,6 +84,12 @@ const allFruits = [
   "Yuzu",
 ];
 
+function searchHandler(e) {
+  let inputVal = input.value.toLowerCase();
+  let resultsArray = searchFruit(inputVal);
+  showSuggestions(resultsArray);
+}
+
 function searchFruit(inputVal) {
   return allFruits.reduce((resultsArray, nextFruit) => {
     if (nextFruit.toLowerCase().includes(inputVal)) {
@@ -92,31 +99,24 @@ function searchFruit(inputVal) {
   }, []);
 }
 
-function searchHandler(e) {
-  const inputVal = input.value.toLowerCase();
-  let resultsArray = searchFruit(inputVal);
-  showSuggestions(resultsArray, inputVal);
-}
-
-function showSuggestions(resultsArray, inputVal) {
+function showSuggestions(resultsArray) {
+  //instead of add class "has-suggestions", this sets suggestions to null everytime
   suggestions.innerHTML = "";
 
   resultsArray.forEach((fruit) => {
     const newSuggest = document.createElement("li");
     newSuggest.textContent = fruit;
     newSuggest.classList.add("newSuggest");
-    newSuggest.setAttribute("id", fruit);
     suggestions.appendChild(newSuggest);
   });
 }
 
 function useSuggestion(e) {
-  if (e.target.tagName === "LI") {
+  if (e.target.className === "newSuggest") {
     input.value = e.target.innerText;
-    suggestions.innerHTML = "";
+    e.target === fruitForm.submit();
   }
 }
 
 input.addEventListener("keyup", searchHandler);
 suggestions.addEventListener("click", useSuggestion);
-// suggestions.addEventListener("mouseover", useSuggestion);

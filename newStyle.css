@@ -19,7 +19,7 @@ body {
   margin-right: auto;
   height: 100vh;
   width: 80%;
-  border: solid 1px black;
+  /* border: solid 1px black; */
   padding-top: 100px;
 }
 
@@ -36,17 +36,18 @@ input {
 
 .suggestions {
   width: 50%;
-  background-color: white;
-  /* display: flex; */
-  /* justify-content: center; */
+  background-color: inherit;
+  display: flex;
+  justify-content: center;
   padding-left: auto;
   padding-right: auto;
+  padding-top: 10px;
 }
 
 .search-container input,
 .search-container .suggestions {
   font-family: monospace;
-  font-size: 1rem;
+  font-size: 1.2rem;
 }
 
 ul {
@@ -57,9 +58,11 @@ ul {
 ul.has-suggestions {
 }
 ul li {
+  margin: 10px;
+  padding-left: 100px;
 }
 ul li:hover {
-  font-size: 1.2rem;
+  /* font-size: 1.5rem; */
   cursor: pointer;
   color: #fc575e;
 }
