@@ -84,21 +84,21 @@ const allFruits = [
   "Yuzu",
 ];
 
-function searchHandler(e) {
-  e.preventDefault();
-  // inputVal !== " ";
-  let inputVal = input.value.toLowerCase();
-  let resultsArray = searchFruit(inputVal);
-  showSuggestions(resultsArray);
-}
-
 function searchFruit(inputVal) {
-  return allFruits.reduce((resultsArray, nextFruit) => {
-    if (nextFruit.toLowerCase().includes(inputVal) && inputVal !== " ") {
+  let resultsArray = allFruits.reduce((resultsArray, nextFruit) => {
+    if (nextFruit.toLowerCase().includes(inputVal)) {
       resultsArray.push(nextFruit);
     }
     return resultsArray;
   }, []);
+
+  showSuggestions(resultsArray);
+}
+
+function searchHandler(e) {
+  let inputVal = input.value.toLowerCase();
+
+  inputVal.length !== 0 ? searchFruit(inputVal) : fruitForm.reset();
 }
 
 function showSuggestions(resultsArray) {
