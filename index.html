@@ -12,12 +12,16 @@
   <body>
     <!-- partial:index.partial.html -->
     <div class="search-container">
-      <input
-        type="text"
-        name="fruit"
-        id="fruit"
-        placeholder="Search fruit 🍎"
-      />
+      <form id="fruitForm" class="search-bar" action="" autocomplete="off">
+        <label for="fruit"></label>
+        <input
+          type="text"
+          name="fruit"
+          id="fruit"
+          placeholder="Search fruit 🍎"
+        />
+        <button id="searchBtn" type="submit"></button>
+      </form>
       <div class="suggestions">
         <ul></ul>
       </div>

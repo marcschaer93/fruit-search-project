@@ -85,27 +85,30 @@ const allFruits = [
 ];
 
 function searchFruit(inputVal) {
-  let resultsArray = allFruits.reduce((resultsArray, nextFruit) => {
+  let foundFruits = allFruits.reduce((foundFruits, nextFruit) => {
     if (nextFruit.toLowerCase().includes(inputVal)) {
-      resultsArray.push(nextFruit);
+      foundFruits.push(nextFruit);
     }
-    return resultsArray;
+    return foundFruits;
   }, []);
 
-  showSuggestions(resultsArray);
+  showSuggestions(foundFruits);
 }
 
 function searchHandler(e) {
   let inputVal = input.value.toLowerCase();
 
-  inputVal.length !== 0 ? searchFruit(inputVal) : fruitForm.reset();
+  if (inputVal.length !== 0) {
+    searchFruit(inputVal);
+  } else {
+    suggestions.innerHTML = "";
+  }
 }
 
-function showSuggestions(resultsArray) {
-  //instead of add class "has-suggestions", this sets suggestions to null everytime
+function showSuggestions(foundFruits) {
   suggestions.innerHTML = "";
 
-  resultsArray.forEach((fruit) => {
+  foundFruits.forEach((fruit) => {
     const newSuggest = document.createElement("li");
     newSuggest.textContent = fruit;
     newSuggest.classList.add("newSuggest");
