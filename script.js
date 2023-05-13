@@ -3,9 +3,9 @@ const suggestions = document.querySelector(".suggestions ul");
 const fruitForm = document.querySelector("#fruitForm");
 
 const allFruits = [
-  "Apple 🍎 ",
-  "Apricot ",
-  "Avocado 🥑",
+  "Apple",
+  "Apricot",
+  "Avocado",
   "Banana",
   "Bilberry",
   "Blackberry",
@@ -92,16 +92,15 @@ function searchFruit(inputVal) {
     return foundFruits;
   }, []);
 
+  console.log({ foundFruits });
   showSuggestions(foundFruits);
 }
 
 function searchHandler(e) {
   let inputVal = input.value.toLowerCase();
 
-  if (inputVal.length !== 0) {
+  if (inputVal !== " " && inputVal.length !== 0) {
     searchFruit(inputVal);
-  } else {
-    suggestions.innerHTML = "";
   }
 }
 
@@ -119,9 +118,41 @@ function showSuggestions(foundFruits) {
 function useSuggestion(e) {
   if (e.target.className === "newSuggest") {
     input.value = e.target.innerText;
-    e.target === fruitForm.submit();
+  }
+  setTimeout(submitFunction, 100);
+}
+
+function submitFunction(e) {
+  const result = allFruits.findIndex(
+    (item) => input.value.toUpperCase() === item.toUpperCase()
+  );
+
+  if (result !== -1) {
+    alert(`You found ${input.value} in Fruit World!`);
+    fruitForm.submit();
+  } else {
+    alert(`Sorry, but I couldn't find "${input.value}" in Fruit World!`);
   }
 }
 
+const randomColor = () => {
+  let r = Math.floor(Math.random() * 256);
+  let g = Math.floor(Math.random() * 256);
+  let b = Math.floor(Math.random() * 256);
+  return `rgb(${r}, ${g}, ${b})`;
+};
+
+const letters = document.querySelectorAll(".letter");
+
+const randomColorLetters = () => {
+  setInterval(function () {
+    for (let letter of letters) {
+      letter.style.color = randomColor();
+    }
+  }, 1000);
+};
+randomColorLetters();
+
+fruitForm.addEventListener("submit", submitFunction);
 input.addEventListener("keyup", searchHandler);
 suggestions.addEventListener("click", useSuggestion);

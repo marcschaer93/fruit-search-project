@@ -7,22 +7,38 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css"
     />
-    <link rel="stylesheet" href="./style.css" />
+    <!-- <link rel="stylesheet" href="./style.css" /> -->
+    <link rel="stylesheet" href="style2.css" />
   </head>
   <body>
+    <h1>
+      <span class="letter">F</span>
+      <span class="letter">R</span>
+      <span class="letter">U</span>
+      <span class="letter">I</span>
+      <span class="letter">T</span>
+      <span class="letter"> </span>
+      <span class="letter">W</span>
+      <span class="letter">O</span>
+      <span class="letter">R</span>
+      <span class="letter">L</span>
+      <span class="letter">D</span>
+    </h1>
     <!-- partial:index.partial.html -->
     <div class="search-container">
       <form id="fruitForm" class="search-bar" action="" autocomplete="off">
         <label for="fruit"></label>
         <input
+          required
           type="text"
           name="fruit"
           id="fruit"
-          placeholder="Search fruit 🍎"
+          placeholder="Search your favorite Fruit 🍎🍉🍏🍊🍌🥝🍋!"
         />
-        <button id="searchBtn" type="submit"></button>
+        <button id="searchBtn" type="submit">Search</button>
       </form>
       <div class="suggestions">
+        <ul></ul>
         <ul></ul>
       </div>
     </div>
