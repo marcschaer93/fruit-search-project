@@ -92,15 +92,15 @@ function searchFruit(inputVal) {
     return foundFruits;
   }, []);
 
-  console.log({ foundFruits });
   showSuggestions(foundFruits);
 }
 
 function searchHandler(e) {
   let inputVal = input.value.toLowerCase();
-
-  if (inputVal !== " " && inputVal.length !== 0) {
+  if (inputVal.trim()) {
     searchFruit(inputVal);
+  } else {
+    suggestions.innerHTML = "";
   }
 }
 
@@ -134,7 +134,11 @@ function submitFunction(e) {
     alert(`Sorry, but I couldn't find "${input.value}" in Fruit World!`);
   }
 }
+fruitForm.addEventListener("submit", submitFunction);
+input.addEventListener("keyup", searchHandler);
+suggestions.addEventListener("click", useSuggestion);
 
+// Title Styling
 const randomColor = () => {
   let r = Math.floor(Math.random() * 256);
   let g = Math.floor(Math.random() * 256);
@@ -152,7 +156,3 @@ const randomColorLetters = () => {
   }, 1000);
 };
 randomColorLetters();
-
-fruitForm.addEventListener("submit", submitFunction);
-input.addEventListener("keyup", searchHandler);
-suggestions.addEventListener("click", useSuggestion);
